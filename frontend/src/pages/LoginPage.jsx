@@ -5,7 +5,7 @@ import { authUser } from "../store/authUser";
 const LoginPage = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const { Login } = authUser();
+    const { Login, isLogging } = authUser();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -33,7 +33,7 @@ const LoginPage = () => {
                     <label htmlFor="password" className="block font-medium text-sm text-gray-300">Password</label>
                     <input type="password" id="password" placeholder="******" className="text-white px-3 py-2 w-full mt-1 border border-gray-700 rounded-md bg-transparent focus:outline-none focus:ring" value={password} onChange={(e) => setPassword(e.target.value)}/>
                 </div>
-                <button type="submit" className="bg-red-600 hover:bg-red-700 w-full rounded-md py-2 font-semibold text-white" onClick={handleSubmit}>Sign in</button>
+                <button type="submit" className="bg-red-600 hover:bg-red-700 w-full rounded-md py-2 font-semibold text-white" onClick={handleSubmit}>{isLogging ? "Loading ..." : "Sign in"}</button>
                 <div className="text-gray-400 text-center">Don&apos;t you have an account? <Link to={'/signup'} className="text-red-400 hover:underline">Sign up</Link></div>
             </form>
             </div>
